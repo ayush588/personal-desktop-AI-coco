@@ -108,4 +108,51 @@ if __name__ == "__main__":
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorry my friend sandy. I am not able to send this email")  
+                speak("Sorry my friend sandy. I am not able to send this email") 
+        elif 'how are you' in query: 
+			speak("I am fine, Thank you") 
+			speak("How are you, Sir") 
+
+		elif 'fine' in query or "good" in query: 
+			speak("It's good to know that your fine") 
+
+		elif "change my name to" in query: 
+			query = query.replace("change my name to", "") 
+			assname = query 
+
+		elif "change name" in query: 
+			speak("What would you like to call me, Sir ") 
+			assname = takeCommand() 
+			speak("Thanks for naming me") 
+
+		elif "what's your name" in query or "What is your name" in query: 
+			speak("My friends call me") 
+			speak(assname) 
+			print("My friends call me", assname) 
+
+		elif 'exit' in query: 
+			speak("Thanks for giving me your time") 
+			exit()
+            
+        elif "calculate" in query: 
+			
+			app_id = "Wolframalpha api id"
+			client = wolframalpha.Client(app_id) 
+			indx = query.lower().split().index('calculate') 
+			query = query.split()[indx + 1:] 
+			res = client.query(' '.join(query)) 
+			answer = next(res.results).text 
+			print("The answer is " + answer) 
+			speak("The answer is " + answer) 
+            
+        elif 'search' in query or 'play' in query: 
+			
+			query = query.replace("search", "") 
+			query = query.replace("play", "")		 
+			webbrowser.open(query) 
+
+		elif "who i am" in query: 
+			speak("If you talk then definately your human.") 
+
+		elif "why you came to world" in query: 
+			speak("Thanks to Ayush. further It's a secret") 
